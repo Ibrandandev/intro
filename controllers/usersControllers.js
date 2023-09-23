@@ -1,6 +1,7 @@
 const { request, response } = require("express");
 
 const Usuario = require("../models/usuario");
+const bcrypt = require("bcrypt");
 
 const getUsers = (req = request, res = response) => {
   const { apiKey, limit } = req.query;
@@ -8,11 +9,15 @@ const getUsers = (req = request, res = response) => {
   res.json({ mensaje: "Recibo Mensaje", apiKey, limit });
 };
 
-const postUsers = (req = request, res = response) => {
+const postUsers = async (req = request, res = response) => {
   const data = req.body;
   const { nombre, correo, password, rol } = data;
 
   const usuario = new Usuario({ nombre, correo, password, rol });
+  const salt = bcrypt.genSaltSync(10);
+  usuario.password = bcrypt.hashSync(password.salt);
+
+  await usuario.save();
   res.json({ usuario, mensaje: "Envio Mensaje" });
 };
 
