@@ -15,10 +15,10 @@ const postUsers = async (req = request, res = response) => {
 
   const usuario = new Usuario({ nombre, correo, password, rol });
   const salt = bcrypt.genSaltSync(10);
-  usuario.password = bcrypt.hashSync(password.salt);
+  usuario.password = bcrypt.hashSync(password, salt);
 
   await usuario.save();
-  res.json({ usuario, mensaje: "Envio Mensaje" });
+  res.json({ usuario, mensaje: "El Usuario se creó correctamente" });
 };
 
 const putUsers = (req = request, res = response) => {

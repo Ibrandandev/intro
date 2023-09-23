@@ -1,5 +1,5 @@
-const { validationResult } = require("express-validator");
+// const { validationResult } = require("express-validator");
 
-const validarCampos = () => {};
+// const validarCampos = () => {};
 
-module.exports = { validarCampos };
+// module.exports = { validarCampos };
