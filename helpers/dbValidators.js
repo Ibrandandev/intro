@@ -19,4 +19,5 @@ const isValidRole = async (rol) => {
 
 module.exports = {
   isValidEmail,
+  isValidRole,
 };
