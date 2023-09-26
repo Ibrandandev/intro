@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const getUsers = (req = request, res = response) => {
   const { apiKey, limit } = req.query;
 
-  res.json({ mensaje: "Recibo Mensaje", apiKey, limit });
+  res.json({ mensaje: "Listado", apiKey, limit });
 };
 
 const postUsers = async (req = request, res = response) => {
